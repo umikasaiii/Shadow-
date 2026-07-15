@@ -1,12 +1,12 @@
 {
-  "name": "Shadow Protocol — APEX Hybrid",
+  "name": "Shadow Protocol — APEX Advanced",
   "short_name": "Shadow Protocol",
-  "description": "Fitness tracking app — APEX Hybrid v70.5",
+  "description": "Fitness tracking app — APEX Advanced v71.4",
   "start_url": ".",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "theme_color": "#070910",
+  "theme_color": "#800000",
   "background_color": "#0a0b10",
   "lang": "it",
   "icons": [
