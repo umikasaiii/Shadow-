@@ -5996,14 +5996,16 @@ function _v40RxGrid(rx){
 }
 function _v40ExercisePanel(e,item){
   let rx=rxObj(e);
-  return `<div class="live-ss-ex"><div class="live-ex-name live-ss-name">${esc(e.name)}</div>${_v40RxGrid(rx)}${_v39LiveDetail(rx)}</div>`;
+  let _lh=e&&e.loadable&&e.id?`<div class="load-row" style="margin:6px 0 2px"><input class="load-input" type="number" min="0" step="0.5" data-load="${esc(e.id)}" value="${STATE.loads&&STATE.loads[e.id]||0}"><span class="load-unit">kg</span></div>`:"";
+  return `<div class="live-ss-ex"><div class="live-ex-name live-ss-name">${esc(e.name)}</div>${_v40RxGrid(rx)}${_lh}${_v39LiveDetail(rx)}</div>`;
 }
 function _v40RenderItem(item){
   if(item&&Array.isArray(item.exercises)&&item.exercises.length){
     return `<div class="live-ss-head"><span class="live-ss-label">Superserie · ${item.exercises.length} esercizi</span></div><div class="live-ss-grid">${item.exercises.map(e=>_v40ExercisePanel(e,item)).join('')}</div>`;
   }
   let e=item.e, rx=rxObj(e);
-  return `<div class="live-single-wrap"><div class="live-ex-name">${esc(e.name)}</div><div class="live-block-name">${esc(item.block||'')}</div>${_v40RxGrid(rx)}${_v39LiveDetail(rx)}</div>`;
+  let _lhs=e&&e.loadable&&e.id?`<div class="load-row" style="margin:6px 0 2px"><input class="load-input" type="number" min="0" step="0.5" data-load="${esc(e.id)}" value="${STATE.loads&&STATE.loads[e.id]||0}"><span class="load-unit">kg</span></div>`:"";
+  return `<div class="live-single-wrap"><div class="live-ex-name">${esc(e.name)}</div><div class="live-block-name">${esc(item.block||'')}</div>${_v40RxGrid(rx)}${_lhs}${_v39LiveDetail(rx)}</div>`;
 }
 function renderLive(){
   let root=$('#liveBody'); if(!root)return;
@@ -9007,5 +9009,5 @@ body.theme-grimorio .k4-art-legend,body.theme-arcane-grimoire .k4-art-legend{bor
 </script>
 
 </body></html>
-<script>(function(){var _dip=null;function _showBtn(){var b=document.getElementById("sp-install-btn");if(b)b.style.display="flex";}function _hideBtn(){var b=document.getElementById("sp-install-btn");if(b)b.style.display="none";}if(window.matchMedia("(display-mode: standalone)").matches||window.navigator.standalone){_hideBtn();}window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();_dip=e;_showBtn();});window.addEventListener("appinstalled",function(){_hideBtn();_dip=null;});document.addEventListener("click",function(e){if(e.target&&e.target.id==="sp-install-btn"){if(_dip){_dip.prompt();_dip.userChoice.then(function(){_dip=null;_hideBtn();});}else{var m=document.getElementById("sp-install-msg");if(m)m.style.display=m.style.display==="none"?"block":"none";}}});if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("./sw.js").catch(function(e){console.warn("[SP] SW:",e);});});var _spRld=false;navigator.serviceWorker.addEventListener("controllerchange",function(){if(!_spRld){_spRld=true;window.location.reload();}});}})();</script>
+<script>(function(){document.addEventListener("input",function(ev){var t=ev.target;if(t&&t.dataset&&t.dataset.load!==undefined&&typeof STATE!=="undefined"&&STATE.loads){STATE.loads[t.dataset.load]=Math.max(+(t.value)||0,0);if(typeof save==="function")save();if(typeof updateLoadTargets==="function")updateLoadTargets();}});var _dip=null;function _showBtn(){var b=document.getElementById("sp-install-btn");if(b)b.style.display="flex";}function _hideBtn(){var b=document.getElementById("sp-install-btn");if(b)b.style.display="none";}if(window.matchMedia("(display-mode: standalone)").matches||window.navigator.standalone){_hideBtn();}window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();_dip=e;_showBtn();});window.addEventListener("appinstalled",function(){_hideBtn();_dip=null;});document.addEventListener("click",function(e){if(e.target&&e.target.id==="sp-install-btn"){if(_dip){_dip.prompt();_dip.userChoice.then(function(){_dip=null;_hideBtn();});}else{var m=document.getElementById("sp-install-msg");if(m)m.style.display=m.style.display==="none"?"block":"none";}}});if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("./sw.js").catch(function(e){console.warn("[SP] SW:",e);});});var _spRld=false;navigator.serviceWorker.addEventListener("controllerchange",function(){if(!_spRld){_spRld=true;window.location.reload();}});}})();</script>
 </body></html>
