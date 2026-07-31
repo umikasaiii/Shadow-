@@ -1,12 +1,12 @@
 {
-  "name": "Shadow Protocol — APEX Hybrid",
+  "name": "Shadow Protocol — Max Fluidity",
   "short_name": "Shadow Protocol",
-  "description": "Fitness tracking app — APEX Hybrid v70.5",
+  "description": "Fitness tracking app — Max Fluidity v77",
   "start_url": ".",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "theme_color": "#070910",
+  "theme_color": "#000000",
   "background_color": "#0a0b10",
   "lang": "it",
   "icons": [
