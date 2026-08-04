@@ -9661,6 +9661,19 @@ body.theme-grimorio .k4-art-legend,body.theme-arcane-grimoire .k4-art-legend{bor
 </script>
 
 <script>
+/* sp75-lite remove: keep animations on normal phones */
+(function(){
+  var root=document.documentElement;
+  if(root.classList.contains('sp75-lite')){
+    var reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var lowMem=Number(navigator.deviceMemory||16)<=4;
+    var lowCpu=Number(navigator.hardwareConcurrency||12)<=4;
+    if(!reduced&&!lowMem&&!lowCpu)root.classList.remove('sp75-lite');
+  }
+})();
+</script>
+
+<script>
 (function(){
   var _dip=null;
   function _showBtn(){var b=document.getElementById("sp-install-btn");if(b)b.style.display="flex";}
