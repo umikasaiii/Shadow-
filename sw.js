@@ -1,4 +1,4 @@
-const CACHE = 'shadow-protocol-v9';
+const CACHE = 'shadow-protocol-v10';
 const PRECACHE = ['./', './index.html', './manifest.json', './icons/icon-192.png', './icons/icon-512.png'];
 
 self.addEventListener('install', function(e) {
