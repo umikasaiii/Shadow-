@@ -9991,6 +9991,24 @@ document.title='Shadow Protocol — SP79 Qualità & Recupero';
 .sp254-guide{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:10px 0}.sp254-guide div{padding:9px;border-radius:10px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.055)}.sp254-guide b{display:block;font-size:11px}.sp254-guide span{display:block;margin-top:3px;font-size:9px;color:#9da9c8;line-height:1.35}
 .sp254-food-card{margin-bottom:14px;border-color:color-mix(in srgb,var(--green) 34%,transparent)!important}.sp254-food-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.sp254-food-grid div{padding:10px;border-radius:11px;background:rgba(5,9,18,.82);border:1px solid rgba(255,255,255,.06)}.sp254-food-grid span{display:block;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.sp254-food-grid strong{display:block;margin-top:4px;font-size:14px}.sp254-plain{margin-top:10px;padding:10px;border-radius:11px;background:color-mix(in srgb,var(--green) 6%,rgba(4,7,16,.88));color:#bdcdbf;font-size:11px;line-height:1.45}
 .sp254-baseline-note{margin-top:9px;color:#aab5d0;font-size:11px;line-height:1.45}.sp254-settings-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+.sp254-nutri-control{margin-bottom:14px;border-color:color-mix(in srgb,var(--blue) 34%,transparent)!important}
+.sp254-nutri-sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+.sp254-nutri-sum>div{padding:11px;border-radius:12px;background:rgba(5,9,18,.82);border:1px solid rgba(255,255,255,.07)}
+.sp254-nutri-sum span{display:block;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;font-weight:900}
+.sp254-nutri-sum strong{display:block;margin-top:5px;font-size:16px}
+.sp254-nutri-adjust{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.sp254-nutri-row{padding:11px;border-radius:12px;background:rgba(7,10,22,.76);border:1px solid rgba(255,255,255,.07)}
+.sp254-nutri-row-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px}
+.sp254-nutri-row-head b{font-size:13px}.sp254-nutri-row-head span{font-size:12px;color:var(--blue-2);font-weight:950}
+.sp254-nutri-buttons{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.sp254-nutri-buttons button{min-height:38px;border-radius:10px;border:1px solid color-mix(in srgb,var(--blue) 30%,transparent);background:color-mix(in srgb,var(--blue) 8%,rgba(7,10,22,.8));color:var(--text);font-weight:950}
+.sp254-nutri-buttons button:disabled,.sp254-nutri-control button:disabled{opacity:.35;cursor:not-allowed}
+.sp254-nutri-practical{margin-top:10px;padding:11px;border-radius:12px;border:1px solid color-mix(in srgb,var(--green) 25%,transparent);background:color-mix(in srgb,var(--green) 6%,rgba(4,7,16,.88));font-size:12px;line-height:1.45;color:#c4d9ca}
+.sp254-nutri-rec{margin-top:10px;padding:11px;border-radius:12px;border:1px solid color-mix(in srgb,var(--amber) 28%,transparent);background:color-mix(in srgb,var(--amber) 5%,rgba(7,9,18,.88));font-size:12px;line-height:1.45}
+.sp254-nutri-rec b{color:var(--amber)}
+@media(max-width:600px){.sp254-nutri-sum,.sp254-nutri-adjust{grid-template-columns:1fr}}
+
 @media(max-width:600px){.sp254-grid,.sp254-check-grid,.sp254-food-grid,.sp254-settings-row{grid-template-columns:1fr}.sp254-f.full{grid-column:auto}.sp254-guide{grid-template-columns:1fr}.sp254-timeline{grid-template-columns:repeat(5,1fr)}.sp254-week-nav{grid-template-columns:34px minmax(0,1fr) 34px 68px}}
 </style>
 <script id="sp254-stable-engine">
@@ -10029,18 +10047,84 @@ try{
   APP_DATA.ui.motto='MASSA · ADATTAMENTO · RECUPERO';
   STATE.weekSchedule=JSON.parse(JSON.stringify(P25_PLAN.dayCards));
   STATE.loads=STATE.loads||{}; STATE.strengthLoads=STATE.strengthLoads||{}; Object.keys(STATE.loads).filter(k=>/hip-thrust/i.test(k)).forEach(k=>delete STATE.loads[k]);
-  STATE.adaptive=merge254({"schemaVersion":2,"engineVersion":"P25-2.5.4-stable","programStartDate":"2026-09-08","startDateConfirmed":false,"selectedCalendarWeek":1,"maintenanceBaseline":{"validated":false,"anchors":4,"confidence":"LOW"},"weeklyCheckIns":{},"phaseOverrides":{},"acceptedAdjustments":[],"snapshots":{},"recommendations":{},"supplementVerification":{"epaDha":"REQUIRED","magnesiumElemental":"REQUIRED","vitaminD":"REQUIRED","k2":"REQUIRED","b12":"REQUIRED"},"review":{"t1Completed":false,"nineMonthCompleted":false},"autoGoalPlan":{"version":"HIGH-REALISTIC-24M-v1","startMonth":"2026-09"}},STATE.adaptive||{});
+  STATE.adaptive=merge254({"schemaVersion":2,"engineVersion":"P25-2.5.8-nutrition-manual-hybrid","programStartDate":"2026-09-08","startDateConfirmed":false,"selectedCalendarWeek":1,"maintenanceBaseline":{"validated":false,"anchors":4,"confidence":"LOW"},"weeklyCheckIns":{},"phaseOverrides":{},"acceptedAdjustments":[],"snapshots":{},"recommendations":{},"supplementVerification":{"epaDha":"REQUIRED","magnesiumElemental":"REQUIRED","vitaminD":"REQUIRED","k2":"REQUIRED","b12":"REQUIRED"},"review":{"t1Completed":false,"nineMonthCompleted":false},"autoGoalPlan":{"version":"HIGH-REALISTIC-24M-v1","startMonth":"2026-09"}},STATE.adaptive||{});
+
+  STATE.adaptive.phasePlanVersion='SUMMER-PEAK-2Y-v3';
+  STATE.adaptive.phasePlan='W1–2 calibration · W3–10 cut iniziale · W11–12 transition · W13–30 growth · W31–42 cut estivo I · W43–47 July peak · W48–82 growth · W83–94 cut estivo II · W95–99 July peak · W100–104 post-peak';
+  STATE.adaptive.engineVersion='P25-2.5.8-nutrition-manual-hybrid';
   // Revised W2 volume summary for Muscles page.
   const VOL={'petto':10,'spalle':12,'avambracci':15,'dorsali':8,'schiena alta':12,'trapezi':3,'glutei':16,'quadricipiti':13,'femorali':10,'polpacci':6,'collo':8,'tibiali':2};
   (APP_DATA.muscles||[]).forEach(m=>{if(VOL[m.muscle]!=null)m.weeklyVolume=VOL[m.muscle];if(['spalle','schiena alta','dorsali','glutei','quadricipiti','avambracci'].includes(m.muscle))m.priority='alta';});
 
   function selectedWeek(){return clamp(Number(STATE.adaptive.selectedCalendarWeek||1),1,104);}
   function trainingWeek(w){return ((Number(w)-1)%5)+1;}
-  function plannedState(w){w=Number(w);if(w<=2)return 'CALIBRATION';if(w<=10)return 'CUT';if(w<=12)return 'TRANSITION';return 'GROWTH';}
+  // PHASES V3 — due cicli annuali: crescita nei mesi freschi, cut Apr–Giu, luglio già pulito.
+  function phaseSegment(w){
+    w=clamp(Number(w),1,104);
+    if(w<=2)return {id:'calibration-2026',state:'CALIBRATION',label:'CALIBRAZIONE · Set 2026',start:1,end:2};
+    if(w<=10)return {id:'initial-cut-2026',state:'CUT',label:'CUT INIZIALE · Set–Nov 2026',start:3,end:10};
+    if(w<=12)return {id:'transition-2026',state:'TRANSITION',label:'TRANSIZIONE · Nov 2026',start:11,end:12};
+    if(w<=30)return {id:'growth-1',state:'GROWTH',label:'LEAN GROWTH I · Dic 2026–Mar 2027',start:13,end:30};
+    if(w<=42)return {id:'summer-cut-1',state:'CUT',label:'CUT ESTIVO I · Apr–Giu 2027',start:31,end:42};
+    if(w<=47)return {id:'summer-peak-1',state:'MAINTENANCE',label:'PEAK ESTIVO I · Lug 2027',start:43,end:47};
+    if(w<=82)return {id:'growth-2',state:'GROWTH',label:'LEAN GROWTH II · Ago 2027–Mar 2028',start:48,end:82};
+    if(w<=94)return {id:'summer-cut-2',state:'CUT',label:'CUT ESTIVO II · Apr–Giu 2028',start:83,end:94};
+    if(w<=99)return {id:'summer-peak-2',state:'MAINTENANCE',label:'PEAK ESTIVO II · Lug 2028',start:95,end:99};
+    return {id:'post-peak-growth',state:'GROWTH',label:'POST-PEAK · Ago 2028',start:100,end:104};
+  }
+  function plannedState(w){return phaseSegment(w).state;}
   function stateFor(w){return (STATE.adaptive.phaseOverrides||{})[String(w)]||plannedState(w);}
   function checkFor(w){return (STATE.adaptive.weeklyCheckIns||{})[String(w)]||null;}
   function recoveryFor(w){const c=checkFor(w);if(!c)return {state:'UNASSESSED',reason:'Manca il check settimanale.'};if(c.illness==='yes')return {state:'RED',reason:'Malessere importante segnalato: seduta sospesa.'};if(c.pain==='aggravating')return {state:'RED',reason:'Dolore che modifica/aggrava il gesto: sospendi il gesto interessato.'};if(c.recoveryManual)return {state:c.recoveryManual,reason:'Stato scelto manualmente nel check.'};let n=0,why=[];if(c.sleepAvg!=null&&c.sleepAvg<6.5){n++;why.push('sonno corto')}if(c.performance==='down'){n++;why.push('performance in calo')}if(c.energy==='low'||c.energy==='verylow'){n++;why.push('energia bassa')}if(c.doms==='limiting'){n++;why.push('DOMS limitanti')}if(c.hunger==='interfering'){n++;why.push('fame interferente')}if(c.sessionQuality==='poor'){n++;why.push('sedute scarse')};return n>=2?{state:'YELLOW',reason:why.join(', ')||'Più segnali di fatica.'}:{state:'GREEN',reason:'Dati compatibili con il piano previsto.'};}
-  function nutritionFor(w){const st=stateFor(w),ready=!!STATE.adaptive.maintenanceBaseline.validated;let dcu=0,dfu=0;if(ready&&['CUT','CUT_EXTENSION','MINICUT'].includes(st)){dcu=-2;dfu=-0.5;};for(const a of (STATE.adaptive.acceptedAdjustments||[])){if(Number(a.effectiveWeek)<=w){dcu+=Number(a.deltaCU||0);dfu+=Number(a.deltaFU||0);}}return {baseReady:ready,deltaCU:dcu,deltaFU:dfu,anchors:4,cuText:ready?(dcu===0?'Baseline':`Baseline ${dcu>0?'+':''}${dcu} CU`):'Calibrazione 10–14 giorni',fuText:ready?(dfu===0?'Baseline':`Baseline ${dfu>0?'+':''}${dfu} FU`):'Nessun delta finché non calibrata'};}
+  function baseNutritionDelta(w,st){
+    // Il deficit non cresce automaticamente col tempo: si mantiene il minimo efficace e si adatta dai check.
+    if(st==='CUT'||st==='CUT_EXTENSION'||st==='MINICUT')return {cu:-2,fu:-0.5};
+    // Uscita graduale dal primo cut: evita il salto diretto da -2 CU alla baseline.
+    if(st==='TRANSITION'){if(Number(w)===11)return {cu:-1,fu:-0.25};return {cu:-0.5,fu:0};}
+    return {cu:0,fu:0};
+  }
+  function ensureManualNutritionState(){
+    STATE.adaptive=STATE.adaptive||{};
+    STATE.adaptive.manualNutritionByPhase=STATE.adaptive.manualNutritionByPhase&&typeof STATE.adaptive.manualNutritionByPhase==='object'?STATE.adaptive.manualNutritionByPhase:{};
+    if(!STATE.adaptive.manualNutritionMigratedV1){
+      const grouped={};
+      for(const a of (STATE.adaptive.acceptedAdjustments||[])){
+        const aw=Number(a.effectiveWeek||1),pid=a.phaseId||phaseSegment(aw).id;
+        grouped[pid]=grouped[pid]||{cu:0,fu:0};
+        grouped[pid].cu+=Number(a.deltaCU||0); grouped[pid].fu+=Number(a.deltaFU||0);
+      }
+      Object.keys(grouped).forEach(pid=>{
+        if(!STATE.adaptive.manualNutritionByPhase[pid]){
+          const g=grouped[pid];
+          STATE.adaptive.manualNutritionByPhase[pid]={cu:Math.max(-4,Math.min(3,Math.round(g.cu*2)/2)),fu:Math.max(-1.5,Math.min(1.5,Math.round(g.fu*4)/4)),migrated:true};
+        }
+      });
+      STATE.adaptive.manualNutritionMigratedV1=true;
+    }
+  }
+  function manualNutritionFor(w){
+    ensureManualNutritionState();
+    const seg=phaseSegment(w),x=STATE.adaptive.manualNutritionByPhase[seg.id]||{};
+    return {cu:Number(x.cu||0),fu:Number(x.fu||0),phaseId:seg.id};
+  }
+  function setManualNutritionFor(w,cu,fu){
+    ensureManualNutritionState();
+    const seg=phaseSegment(w);
+    cu=Math.max(-4,Math.min(3,Math.round(Number(cu||0)*2)/2));
+    fu=Math.max(-1.5,Math.min(1.5,Math.round(Number(fu||0)*4)/4));
+    STATE.adaptive.manualNutritionByPhase[seg.id]={cu,fu,updatedWeek:Number(w),updatedAt:new Date().toISOString()};
+    return {cu,fu,phaseId:seg.id};
+  }
+  function signedNutrition(v,unit){v=Number(v||0);return (v>0?'+':'')+String(v).replace('.',',')+' '+unit;}
+  function nutritionFor(w){
+    const st=stateFor(w),seg=phaseSegment(w),ready=!!STATE.adaptive.maintenanceBaseline.validated,base=baseNutritionDelta(w,st),manual=manualNutritionFor(w);
+    const bcu=ready?Number(base.cu||0):0,bfu=ready?Number(base.fu||0):0;
+    const mcu=ready?manual.cu:0,mfu=ready?manual.fu:0;
+    const dcu=Math.round((bcu+mcu)*100)/100,dfu=Math.round((bfu+mfu)*100)/100;
+    return {baseReady:ready,deltaCU:dcu,deltaFU:dfu,baseDeltaCU:bcu,baseDeltaFU:bfu,manualDeltaCU:mcu,manualDeltaFU:mfu,phaseId:seg.id,anchors:4,
+      baseCuText:ready?signedNutrition(bcu,'CU'):'0 CU',baseFuText:ready?signedNutrition(bfu,'FU'):'0 FU',manualCuText:ready?signedNutrition(mcu,'CU'):'0 CU',manualFuText:ready?signedNutrition(mfu,'FU'):'0 FU',effectiveCuText:ready?signedNutrition(dcu,'CU'):'0 CU',effectiveFuText:ready?signedNutrition(dfu,'FU'):'0 FU',
+      cuText:ready?(dcu===0?'Baseline':`Baseline ${dcu>0?'+':''}${String(dcu).replace('.',',')} CU`):'Calibrazione 10–14 giorni',fuText:ready?(dfu===0?'Baseline':`Baseline ${dfu>0?'+':''}${String(dfu).replace('.',',')} FU`):'Nessun delta finché non calibrata'};
+  }
   function lowerLoadState(w){const c=checkFor(w)||{},prev=checkFor(Number(w)-1)||{},v=c.lowerTolerance||'ok',pv=prev.lowerTolerance||'ok';const two=['two_down','persistent','z2_not_tolerated'].includes(v),persistent=['persistent','z2_not_tolerated'].includes(v)||(v==='two_down'&&['two_down','persistent','z2_not_tolerated'].includes(pv)),z2Poor=v==='z2_not_tolerated';return {two,persistent,z2Poor,label:v};}
   function scaleSplitToTotal(split,total){const base=split.reduce((a,b)=>a+b,0)||1;if(base<=total)return split.slice();const raw=split.map(x=>x*total/base),out=raw.map(Math.floor);let left=total-out.reduce((a,b)=>a+b,0);for(let i=0;left>0;i=(i+1)%out.length){out[i]++;left--;}return out;}
   function cardioFor(w){const tw=trainingWeek(w),rec=recoveryFor(w).state,low=lowerLoadState(w),c=checkFor(w)||{};let z2=0,hiit=0,split=[0,0,0];if(w===1){z2=60;split=[20,20,20]}else if(w===2){z2=90;split=[30,30,30]}else if(w===3){z2=120;split=[50,30,40];hiit=rec==='GREEN'?4:0}else if(w===4){z2=130;split=[55,30,45];hiit=rec==='GREEN'?6:0}else if(w===5){z2=100;split=[40,20,40]}else{const totals=[120,130,140,150,120];z2=totals[tw-1];const normal=[[50,30,40],[55,30,45],[60,35,45],[60,40,50],[50,30,40]];split=normal[tw-1].slice();const rounds=[6,8,10,8,0][tw-1];hiit=rec==='GREEN'?rounds:0;}if(rec==='YELLOW'||rec==='RED'||low.two)hiit=0;if(low.persistent&&z2>120){z2=120;split=scaleSplitToTotal(split,z2);}if(low.z2Poor&&z2>90){z2=90;split=scaleSplitToTotal(split,z2);}if(c.illness==='yes'){z2=0;hiit=0;split=[0,0,0];}else if(c.pain==='aggravating'&&/(ginocch|anca|cavigl|piede|gamba|lombar|schiena bassa|hip|knee|ankle|foot|low back)/i.test(String(c.painSite||''))){z2=0;hiit=0;split=[0,0,0];}return {total:z2,split,hiit,lower:low};}
@@ -10132,10 +10216,37 @@ try{
 
     return {series:s,reps:p.repsW2||'Range approvato P1',rir:rir,rest:p.rest||''};
   }
-  function resolveWeek(w=selectedWeek()){w=clamp(Number(w),1,104);return {calendarWeek:w,trainingWeek:trainingWeek(w),bodyCompositionState:stateFor(w),recovery:recoveryFor(w),nutrition:nutritionFor(w),cardio:cardioFor(w),sleep:sleepFor(w),steps:stepsFor(w)};}
+  function resolveWeek(w=selectedWeek()){w=clamp(Number(w),1,104);const phase=phaseSegment(w),state=stateFor(w);return {calendarWeek:w,trainingWeek:trainingWeek(w),bodyCompositionState:state,phase,phaseLabel:state===phase.state?phase.label:`${state} · override`,recovery:recoveryFor(w),nutrition:nutritionFor(w),cardio:cardioFor(w),sleep:sleepFor(w),steps:stepsFor(w)};}
   function recoveryExplain(s){if(s==='GREEN')return 'GREEN = recupero compatibile: esegui il piano previsto. Non significa aumentare automaticamente volume o intensità.';if(s==='YELLOW')return 'YELLOW = proteggi il recupero: niente escalation; prima si elimina HIIT/intensificazioni e si riduce solo ciò che serve.';if(s==='RED')return 'RED = segnale importante: niente lavoro che aggrava il problema e serve rivalutare la causa.';return 'DA VERIFICARE = manca un check sufficiente. Il sistema non presume GREEN.';}
-  function foodPlain(r){const n=r.nutrition;if(!n.baseReady)return 'Per i primi 10–14 giorni: non aggiungere o togliere CU/FU. Mangia normalmente con porzioni abbastanza ripetibili e compila il check.';let a=n.deltaCU===0?'carboidrati come baseline':(n.deltaCU<0?`togli ${Math.abs(n.deltaCU)} piccole porzioni carbo nell’intera giornata`:`aggiungi ${n.deltaCU} piccola/e porzione/i carbo nell’intera giornata`);let b=n.deltaFU===0?'grassi come baseline':(n.deltaFU<0?`riduci ${Math.abs(n.deltaFU)} FU di grassi aggiunti`:`aggiungi ${n.deltaFU} FU`);return 'In pratica: '+a+' · '+b+'. Proteine: circa 4 ancore al giorno.';}
-  function recommendation(w=selectedWeek()){const r=resolveWeek(w),c=checkFor(w),n=r.nutrition;if(!n.baseReady)return {action:'CALIBRA_BASELINE',reason:'Prima servono 10–14 giorni di porzioni ripetibili e trend reali.',confidence:'HIGH'};if(!c)return {action:'MAINTAIN',reason:'Nessuna modifica persistente senza check.',confidence:'LOW'};if(r.recovery.state==='RED')return {action:'REDUCE_FATIGUE',reason:r.recovery.reason,confidence:'HIGH'};if(r.recovery.state==='YELLOW')return {action:'REDUCE_FATIGUE',reason:r.recovery.reason,confidence:'MEDIUM'};if(r.bodyCompositionState==='CUT'){if(c.weightTrendPct!=null&&c.weightTrendPct<-.7)return {action:'ADD_1_CU',deltaCU:1,reason:'Perdita più rapida del range prudente.',confidence:'MEDIUM'};if(c.weightTrendPct!=null&&Math.abs(c.weightTrendPct)<.15&&c.waistTrend!=='down')return {action:'REMOVE_1_CU',deltaCU:-1,reason:'Peso e vita non migliorano; applica una sola leva.',confidence:'MEDIUM'};}return {action:'MAINTAIN',reason:'Trend compatibili o evidenza insufficiente per cambiare.',confidence:'MEDIUM'};}
+  function foodPlain(r){
+    const n=r.nutrition;
+    if(!n.baseReady)return 'Per i primi 10–14 giorni: non aggiungere o togliere CU/FU. Mantieni ripetibili soprattutto colazione e cena e compila il check.';
+    let a=n.deltaCU===0?'carboidrati come baseline a colazione e cena':(n.deltaCU<0?`riduci di ${Math.abs(n.deltaCU)} CU complessive, ripartite fra colazione e cena`:`aggiungi ${n.deltaCU} CU complessive, ripartite fra colazione e cena`);
+    let b=n.deltaFU===0?'grassi come baseline':(n.deltaFU<0?`riduci ${Math.abs(n.deltaFU)} FU di grassi aggiunti`:`aggiungi ${n.deltaFU} FU`);
+    return 'In pratica: '+a+' · '+b+'. Il totale è BASE FASE + CORREZIONE MANUALE. Pranzo e merenda restano alla baseline; proteine circa 4 ancore al giorno.';
+  }
+  function recommendation(w=selectedWeek()){
+    const r=resolveWeek(w),c=checkFor(w),n=r.nutrition,seg=phaseSegment(w);
+    if(!n.baseReady)return {action:'CALIBRA_BASELINE',reason:'Prima servono 10–14 giorni di porzioni ripetibili e trend reali.',confidence:'HIGH'};
+    if(!c)return {action:'MAINTAIN',reason:'Nessuna modifica nutrizionale senza check settimanale.',confidence:'LOW'};
+    if(r.recovery.state==='RED')return {action:'REDUCE_FATIGUE',reason:r.recovery.reason,confidence:'HIGH'};
+    if(r.recovery.state==='YELLOW')return {action:'REDUCE_FATIGUE',reason:r.recovery.reason,confidence:'MEDIUM'};
+    if(r.bodyCompositionState==='CUT'){
+      if(c.weightTrendPct!=null&&c.weightTrendPct<-.7)return {action:'ADD_1_CU',deltaCU:1,deltaFU:0,reason:'Perdita più rapida del range prudente: valuta di restituire 1 CU.',confidence:'MEDIUM'};
+      if(c.weightTrendPct!=null&&Math.abs(c.weightTrendPct)<.15&&c.waistTrend!=='down')return {action:'REMOVE_1_CU',deltaCU:-1,deltaFU:0,reason:'Peso quasi fermo e vita non in calo: valuta una sola leva da −1 CU.',confidence:'MEDIUM'};
+      if(c.weightTrendPct!=null&&c.weightTrendPct>.25&&c.waistTrend==='up')return {action:'REMOVE_1_CU',deltaCU:-1,deltaFU:0,reason:'Peso e vita stanno salendo durante il cut: valuta −1 CU.',confidence:'MEDIUM'};
+    }
+    if(r.bodyCompositionState==='GROWTH'){
+      const p=checkFor(Number(w)-1),samePhase=Number(w)>=seg.start+2&&phaseSegment(Number(w)-1).id===seg.id&&phaseSegment(Number(w)-2).id===seg.id;
+      const twoWeeks=samePhase&&p&&c.weightTrendPct!=null&&p.weightTrendPct!=null;
+      if(!twoWeeks)return {action:'MAINTAIN',reason:'Growth: raccogli almeno 2 settimane consecutive nella stessa fase prima di proporre più cibo.',confidence:'MEDIUM'};
+      const waistControlled=c.waistTrend!=='up'&&p.waistTrend!=='up',notGaining=c.weightTrendPct<=.15&&p.weightTrendPct<=.15,performanceOK=c.performance!=='down'&&p.performance!=='down';
+      if(notGaining&&waistControlled&&performanceOK&&n.manualDeltaCU<2)return {action:'ADD_1_CU',deltaCU:1,deltaFU:0,reason:'Due settimane senza crescita significativa, vita controllata e performance stabile: valuta +1 CU.',confidence:'MEDIUM'};
+      if((c.weightTrendPct>.35||c.waistTrend==='up')&&n.manualDeltaCU>0)return {action:'REMOVE_1_CU',deltaCU:-1,deltaFU:0,reason:'Growth troppo rapido o vita in aumento: valuta di togliere 1 CU dalla correzione manuale.',confidence:'MEDIUM'};
+    }
+    if(r.bodyCompositionState==='MAINTENANCE'&&(Math.abs(n.manualDeltaCU)>.01||Math.abs(n.manualDeltaFU)>.01))return {action:'RESET_PHASE',deltaCU:-n.manualDeltaCU,deltaFU:-n.manualDeltaFU,reason:'Peak/Maintenance: valuta il ritorno alla sola base della fase.',confidence:'MEDIUM'};
+    return {action:'MAINTAIN',reason:'Trend compatibili o evidenza insufficiente per cambiare. Mantieni la correzione attuale.',confidence:'MEDIUM'};
+  }
 
   window.SP25={resolveWeek,resolveExercise,recommendation,recoveryExplain,foodPlain,selectedWeek,trainingWeek};
   // Override prescription layer only for new P1 rows; all legacy visuals/features remain.
@@ -10170,9 +10281,37 @@ try{
   seedGoals();
 
   function setCalendarWeek(w,view){w=clamp(Number(w),1,104);STATE.adaptive.selectedCalendarWeek=w;STATE.currentWeek=trainingWeek(w);try{save();}catch(_e){}rebuild(view||SP254_ACTIVE);}
-  function miniCard(){const r=resolveWeek(),rec=r.recovery.state;let opts='';for(let i=1;i<=104;i++)opts+=`<option value="${i}" ${i===r.calendarWeek?'selected':''}>Week ${i} · W${trainingWeek(i)}</option>`;return `<div class="sp254-adapt-mini"><div class="sp254-mini-top"><div><div class="sp254-mini-title">Adaptive · Week ${r.calendarWeek} · W${r.trainingWeek}</div><div class="sp254-mini-sub">${ehtml(r.bodyCompositionState)} · ${ehtml(r.nutrition.cuText)}</div></div><button class="sp254-rec ${rec}" id="sp254RecHelp">${rec==='UNASSESSED'?'DA VERIFICARE':rec}</button></div><div class="sp254-mini-info">Z2 ${r.cardio.total}′ · HIIT ${r.cardio.hiit? r.cardio.hiit+'×30/30':'OFF'} · Sonno ${r.sleep}</div><div class="sp254-mini-help" id="sp254RecText">${ehtml(recoveryExplain(rec))}</div><div class="sp254-week-nav"><button id="sp254Prev">‹</button><select id="sp254WeekSelect">${opts}</select><button id="sp254Next">›</button><button id="sp254Open">Apri</button></div></div>`;}
-  function nutritionHero(){const r=resolveWeek();return `<div class="section-card sp254-food-card"><div class="card-pad"><div class="section-head"><div><div class="section-title-sm">Week ${r.calendarWeek} · ${ehtml(r.bodyCompositionState)}</div><div class="nutrition-title">Cosa mangiare questa settimana</div></div><div class="pill green">Intuitivo</div></div><div class="sp254-food-grid"><div><span>Proteine</span><strong>4 ancore</strong></div><div><span>Carboidrati</span><strong>${ehtml(r.nutrition.cuText)}</strong></div><div><span>Grassi</span><strong>${ehtml(r.nutrition.fuText)}</strong></div></div><div class="sp254-plain"><b>${ehtml(foodPlain(r))}</b><br>1 CU ≈ una piccola porzione carbo (es. ~30–35 g riso/pasta secchi, ~150 g patate o una banana). 1 FU ≈ ~10 g di grassi (es. ~2 cucchiaini d’olio). Merenda pre-workout e cena post-workout restano i punti principali per i carboidrati.</div><details class="sp254-baseline-note"><summary><b>Che significa calibrare la baseline?</b></summary>Baseline = le porzioni che mantengono più o meno stabile il tuo peso quando il rientro si assesta. Per 10–14 giorni usa recipienti e porzioni abbastanza ripetibili e compila il check. Solo dopo ha senso dire “−1 CU” o “+1 CU”. Non devi contare calorie.</details></div></div>`;}
-  const legacyNutrition=nutrition;nutrition=function(){let x=legacyNutrition();x=x.replace('Omega 3 2 g','Omega-3 — verifica EPA+DHA').replace('Vitamina D 4000 UI con K2 200 μg','Vitamina D/K2 — dose da verificare').replace('Vitamina B12 1000 μg (1/sett.)','B12 — indicazione da verificare').replace('Magnesio 400 mg','Magnesio — verifica dose elementare');return nutritionHero()+x;};
+  function practicalFoodGuide(n){
+    const d=Number(n?.deltaCU||0);
+    // Baseline pratica: 60–70 g di cereali a colazione + ~1 piatto di fonte amidacea a cena.
+    // Ogni CU vale ~30–35 g secchi; per semplicità il delta viene diviso 50/50 tra i due pasti variabili.
+    const breakfastMid=Math.max(0,65+d*16.25);
+    const breakfastLo=Math.max(0,Math.round((breakfastMid-5)/5)*5);
+    const breakfastHi=Math.max(breakfastLo,Math.round((breakfastMid+5)/5)*5);
+    const dinner=Math.max(0.25,1+d*0.25);
+    const plateLabel=Math.abs(dinner-0.25)<.01?'¼ piatto':Math.abs(dinner-0.5)<.01?'½ piatto':Math.abs(dinner-0.75)<.01?'¾ piatto':Math.abs(dinner-1)<.01?'1 piatto':Math.abs(dinner-1.25)<.01?'1¼ piatti':Math.abs(dinner-1.5)<.01?'1½ piatti':dinner.toLocaleString('it-IT',{maximumFractionDigits:2})+' piatti';
+    if(!n?.baseReady)return {breakfast:'60–70 g cereali',dinner:'~1 piatto carbo',note:'baseline da calibrare'};
+    return {breakfast:`${breakfastLo}–${breakfastHi} g cereali`,dinner:`~${plateLabel} carbo`,note:d===0?'baseline':`${d>0?'+':''}${d} CU/die`};
+  }
+  function miniCard(){const r=resolveWeek(),rec=r.recovery.state,p=practicalFoodGuide(r.nutrition);let opts='';for(let i=1;i<=104;i++)opts+=`<option value="${i}" ${i===r.calendarWeek?'selected':''}>Week ${i} · W${trainingWeek(i)}</option>`;return `<div class="sp254-adapt-mini"><div class="sp254-mini-top"><div><div class="sp254-mini-title">Adaptive · Week ${r.calendarWeek} · W${r.trainingWeek}</div><div class="sp254-mini-sub">${ehtml(r.phaseLabel)} · ${ehtml(r.nutrition.cuText)}</div></div><button class="sp254-rec ${rec}" id="sp254RecHelp">${rec==='UNASSESSED'?'DA VERIFICARE':rec}</button></div><div class="sp254-mini-info">Z2 ${r.cardio.total}′ · HIIT ${r.cardio.hiit? r.cardio.hiit+'×30/30':'OFF'} · Sonno ${r.sleep}</div><div class="sp254-mini-info"><b>Porzioni pratiche:</b> colazione ${ehtml(p.breakfast)} · cena ${ehtml(p.dinner)} <span style="opacity:.72">(${ehtml(p.note)})</span></div><div class="sp254-mini-help" id="sp254RecText">${ehtml(recoveryExplain(rec))}</div><div class="sp254-week-nav"><button id="sp254Prev">‹</button><select id="sp254WeekSelect">${opts}</select><button id="sp254Next">›</button><button id="sp254Open">Apri</button></div></div>`;}
+  function nutritionHero(){
+    const r=resolveWeek();
+    return `<div class="section-card sp254-food-card"><div class="card-pad"><div class="section-head"><div><div class="section-title-sm">Week ${r.calendarWeek} · ${ehtml(r.phaseLabel)}</div><div class="nutrition-title">Cosa mangiare questa settimana</div></div><div class="pill green">Intuitivo</div></div><div class="sp254-food-grid"><div><span>Proteine</span><strong>4 ancore</strong></div><div><span>Carboidrati totali</span><strong>${ehtml(r.nutrition.cuText)}</strong></div><div><span>Grassi totali</span><strong>${ehtml(r.nutrition.fuText)}</strong></div></div><div class="sp254-plain"><b>${ehtml(foodPlain(r))}</b><br>1 CU ≈ una piccola porzione carbo (es. ~30–35 g riso/pasta secchi, ~150 g patate o una banana). 1 FU ≈ ~10 g di grassi aggiunti. La fase imposta automaticamente la base; qualsiasi correzione extra è manuale e confermata da te nella scheda qui sotto.</div><details class="sp254-baseline-note"><summary><b>Che significa calibrare la baseline?</b></summary>Baseline = le porzioni che mantengono più o meno stabile il tuo peso quando il rientro si assesta. Per 10–14 giorni usa porzioni abbastanza ripetibili e compila il check. Dopo la calibrazione la fase applica la propria base, mentre le correzioni restano manuali.</details></div></div>`;
+  }
+  function nutritionManualCard(){
+    const r=resolveWeek(),n=r.nutrition,p=practicalFoodGuide(n),rec=recommendation(r.calendarWeek),ready=n.baseReady;
+    const actionable=ready&&(Number(rec.deltaCU||0)!==0||Number(rec.deltaFU||0)!==0);
+    const recDelta=[rec.deltaCU?`${rec.deltaCU>0?'+':''}${rec.deltaCU} CU`:'',rec.deltaFU?`${rec.deltaFU>0?'+':''}${rec.deltaFU} FU`:''].filter(Boolean).join(' · ');
+    return `<div class="section-card sp254-nutri-control"><div class="card-pad"><div class="section-head"><div><div class="section-title-sm">Regolazione nutrizione · controllo manuale</div><div style="font-size:23px;font-weight:950">Base fase + correzione = totale</div></div><div class="pill blue">Manuale</div></div>
+      <div class="sp254-nutri-sum"><div><span>Base automatica</span><strong>${ehtml(n.baseCuText)} · ${ehtml(n.baseFuText)}</strong></div><div><span>Correzione personale</span><strong>${ehtml(n.manualCuText)} · ${ehtml(n.manualFuText)}</strong></div><div><span>Totale effettivo</span><strong>${ehtml(n.effectiveCuText)} · ${ehtml(n.effectiveFuText)}</strong></div></div>
+      <div class="sp254-nutri-adjust"><div class="sp254-nutri-row"><div class="sp254-nutri-row-head"><b>Carboidrati · CU</b><span>${ehtml(n.manualCuText)}</span></div><div class="sp254-nutri-buttons"><button ${ready?'':'disabled'} data-sp254-nutri-kind="cu" data-sp254-nutri-delta="-0.5">−0,5 CU</button><button ${ready?'':'disabled'} data-sp254-nutri-kind="cu" data-sp254-nutri-delta="0.5">+0,5 CU</button></div></div><div class="sp254-nutri-row"><div class="sp254-nutri-row-head"><b>Grassi · FU</b><span>${ehtml(n.manualFuText)}</span></div><div class="sp254-nutri-buttons"><button ${ready?'':'disabled'} data-sp254-nutri-kind="fu" data-sp254-nutri-delta="-0.25">−0,25 FU</button><button ${ready?'':'disabled'} data-sp254-nutri-kind="fu" data-sp254-nutri-delta="0.25">+0,25 FU</button></div></div></div>
+      <div class="sp254-nutri-practical"><b>Porzioni pratiche:</b> colazione ${ehtml(p.breakfast)} · cena ${ehtml(p.dinner)} · pranzo e merenda invariati. <span style="opacity:.75">${ehtml(p.note)}</span></div>
+      <div class="sp254-nutri-rec"><b>Suggerimento Adaptive: ${ehtml(rec.action)}</b><br>${ehtml(rec.reason)}${actionable?`<br><span style="opacity:.8">Modifica proposta: ${ehtml(recDelta)}</span>`:''}</div>
+      <div class="sp254-actions" style="margin-top:10px"><button class="action-btn green" id="sp254NutriApplyRec" ${actionable?'':'disabled'}>${actionable?'Applica suggerimento':'Nessuna modifica da applicare'}</button><button class="action-btn" id="sp254NutriReset" ${ready?'':'disabled'}>Ripristina fase</button></div>
+      <div class="sp254-baseline-note">Range manuali: CU da −4 a +3 rispetto alla base; FU da −1,5 a +1,5. Il cambio di fase usa automaticamente la nuova base e la nuova fase parte da correzione manuale 0.</div>
+    </div></div>`;
+  }
+  const legacyNutrition=nutrition;nutrition=function(){let x=legacyNutrition();x=x.replace('Omega 3 2 g','Omega-3 — verifica EPA+DHA').replace('Vitamina D 4000 UI con K2 200 μg','Vitamina D/K2 — dose da verificare').replace('Vitamina B12 1000 μg (1/sett.)','B12 — indicazione da verificare').replace('Magnesio 400 mg','Magnesio — verifica dose elementare');return nutritionHero()+nutritionManualCard()+x;};
 
   function checkCard(){const w=selectedWeek(),c=checkFor(w)||{},r=resolveWeek(),rec=recommendation(w);const opt=(v,l,cur)=>`<option value="${v}" ${String(cur||'')===v?'selected':''}>${l}</option>`;return `<div class="section-card sp254-check"><div class="card-pad"><div class="section-head"><div><div class="section-title-sm">Check settimanale · Week ${w}</div><div style="font-size:24px;font-weight:950">5 minuti</div></div><div class="pill ${r.recovery.state==='GREEN'?'green':'blue'}">${ehtml(r.recovery.state)}</div></div><div class="sp254-guide"><div><b>Ogni settimana</b><span>Peso medio, vita, performance, sonno, passi e recupero.</span></div><div><b>Ogni 4–5 settimane</b><span>Tutte le circonferenze + confronto con obiettivo del mese.</span></div><div><b>Week 10</b><span>T1: foto, misure, performance e vera personalizzazione.</span></div></div><div class="sp254-check-grid">
   <div class="sp254-f"><label>Peso medio settimana (kg)</label><input id="sp254Weight" type="number" step="0.1" value="${ehtml(c.weightMean??'')}"></div>
@@ -10193,7 +10332,7 @@ try{
   <div class="sp254-f full"><label>Recovery manuale (solo se vuoi correggere l’auto)</label><select id="sp254Manual"><option value="">Automatico</option>${opt('GREEN','GREEN',c.recoveryManual)}${opt('YELLOW','YELLOW',c.recoveryManual)}${opt('RED','RED',c.recoveryManual)}</select></div>
   <div class="sp254-f full"><button class="action-btn blue" id="sp254SaveCheck" type="button">Salva check settimanale</button></div></div><div class="sp254-plain"><b>Decisione attuale: ${ehtml(rec.action)}</b><br>${ehtml(rec.reason)}<br>${ehtml(recoveryExplain(r.recovery.state))}</div></div></div>`;}
 
-  function adaptiveView(){const r=resolveWeek(),rec=recommendation(),snap=(STATE.adaptive.snapshots||{})[String(r.calendarWeek)];let weeks='';for(let i=1;i<=104;i++)weeks+=`<button class="sp254-w ${i===r.calendarWeek?'active':''}" data-sp254-week="${i}">${i}<br>W${trainingWeek(i)}</button>`;return `<div class="sp254-layout"><div class="section-card"><div class="card-pad"><div class="section-head"><div><div class="section-title-sm">Resolved Week</div><div style="font-size:27px;font-weight:950">Week ${r.calendarWeek} · Training W${r.trainingWeek}</div></div><button class="sp254-rec ${r.recovery.state}" id="sp254RecAdaptive">${ehtml(r.recovery.state)}</button></div><div class="sp254-grid"><div class="sp254-kpi"><span>Composizione</span><strong>${ehtml(r.bodyCompositionState)}</strong><small>Stato nutrizionale corrente</small></div><div class="sp254-kpi"><span>Nutrition</span><strong>${ehtml(r.nutrition.cuText)}</strong><small>4 protein anchors · ${ehtml(r.nutrition.fuText)}</small></div><div class="sp254-kpi"><span>Cardio</span><strong>${r.cardio.total}′ Z2</strong><small>G3 ${r.cardio.split[0]} · G4 ${r.cardio.split[1]} · G6 ${r.cardio.split[2]} · HIIT ${r.cardio.hiit}</small></div><div class="sp254-kpi"><span>Recupero</span><strong>${ehtml(r.recovery.state)}</strong><small>${ehtml(r.recovery.reason)}</small></div><div class="sp254-kpi"><span>Sonno</span><strong>${ehtml(r.sleep)}</strong><small>Opportunity target</small></div><div class="sp254-kpi"><span>Passi</span><strong>${ehtml(r.steps)}</strong><small>Media orientativa</small></div></div></div></div><div class="section-card"><div class="card-pad"><div class="section-head"><div><div class="section-title-sm">Timeline 24 mesi</div><div class="small-note">Mesi 10–24 sono condizionali: il futuro non viene finto come certo.</div></div><div class="pill blue">104 week</div></div><div class="sp254-timeline">${weeks}</div></div></div><div class="section-card"><div class="card-pad"><div class="section-head"><div><div class="section-title-sm">Baseline e data inizio</div><div class="small-note">Impostazioni necessarie prima che i delta alimentari diventino operativi.</div></div></div><div class="sp254-settings-row"><div class="sp254-f"><label>Data inizio programma</label><input id="sp254StartDate" type="date" value="${ehtml(STATE.adaptive.programStartDate||'')}"></div><div class="sp254-f"><label>Baseline alimentare</label><select id="sp254Baseline"><option value="no" ${!STATE.adaptive.maintenanceBaseline.validated?'selected':''}>Da calibrare 10–14 giorni</option><option value="yes" ${STATE.adaptive.maintenanceBaseline.validated?'selected':''}>Calibrata</option></select></div></div><div class="sp254-baseline-note"><b>Calibrare = osservare, non contare calorie.</b> Usa porzioni abbastanza ripetibili per 10–14 giorni. Quando il trend descrive il tuo mantenimento pratico, seleziona “Calibrata”. Solo allora il motore può usare +/− CU/FU.</div><div class="sp254-actions" style="margin-top:10px"><button class="action-btn blue" id="sp254SaveSettings">Salva</button><button class="action-btn" id="sp254Lock">${snap?'Snapshot già salvato':'Salva snapshot settimana'}</button></div></div></div><div class="section-card"><div class="card-pad"><div class="section-title-sm">Decisione suggerita</div><div class="sp254-plain"><b>${ehtml(rec.action)} · confidence ${ehtml(rec.confidence)}</b><br>${ehtml(rec.reason)}<div style="margin-top:8px">Nessuna modifica persistente viene applicata in silenzio.</div></div><div class="sp254-actions" style="margin-top:10px"><button class="action-btn green" id="sp254Accept">ACCEPT</button><button class="action-btn" id="sp254Defer">DEFER</button><button class="action-btn" id="sp254Review">REVIEW</button></div></div></div></div>`;}
+  function adaptiveView(){const r=resolveWeek(),rec=recommendation(),snap=(STATE.adaptive.snapshots||{})[String(r.calendarWeek)];let weeks='';for(let i=1;i<=104;i++)weeks+=`<button class="sp254-w ${i===r.calendarWeek?'active':''}" data-sp254-week="${i}">${i}<br>W${trainingWeek(i)}</button>`;return `<div class="sp254-layout"><div class="section-card"><div class="card-pad"><div class="section-head"><div><div class="section-title-sm">Resolved Week</div><div style="font-size:27px;font-weight:950">Week ${r.calendarWeek} · Training W${r.trainingWeek}</div></div><button class="sp254-rec ${r.recovery.state}" id="sp254RecAdaptive">${ehtml(r.recovery.state)}</button></div><div class="sp254-grid"><div class="sp254-kpi"><span>Composizione</span><strong>${ehtml(r.bodyCompositionState)}</strong><small>${ehtml(r.phaseLabel)}</small></div><div class="sp254-kpi"><span>Nutrition</span><strong>${ehtml(r.nutrition.cuText)}</strong><small>4 protein anchors · ${ehtml(r.nutrition.fuText)}</small></div><div class="sp254-kpi"><span>Cardio</span><strong>${r.cardio.total}′ Z2</strong><small>G3 ${r.cardio.split[0]} · G4 ${r.cardio.split[1]} · G6 ${r.cardio.split[2]} · HIIT ${r.cardio.hiit}</small></div><div class="sp254-kpi"><span>Recupero</span><strong>${ehtml(r.recovery.state)}</strong><small>${ehtml(r.recovery.reason)}</small></div><div class="sp254-kpi"><span>Sonno</span><strong>${ehtml(r.sleep)}</strong><small>Opportunity target</small></div><div class="sp254-kpi"><span>Passi</span><strong>${ehtml(r.steps)}</strong><small>Media orientativa</small></div></div></div></div><div class="section-card"><div class="card-pad"><div class="section-head"><div><div class="section-title-sm">Timeline 24 mesi</div><div class="small-note">Fasi automatiche: cut iniziale → lean growth → cut Apr–Giu → luglio peak/maintenance; ciclo ripetuto nel secondo anno. Le basi cambiano automaticamente con la fase; le correzioni CU/FU sono manuali nella sezione Alimentazione e non si trascinano nelle nuove fasi.</div></div><div class="pill blue">104 week</div></div><div class="sp254-timeline">${weeks}</div></div></div><div class="section-card"><div class="card-pad"><div class="section-head"><div><div class="section-title-sm">Baseline e data inizio</div><div class="small-note">Impostazioni necessarie prima che i delta alimentari diventino operativi.</div></div></div><div class="sp254-settings-row"><div class="sp254-f"><label>Data inizio programma</label><input id="sp254StartDate" type="date" value="${ehtml(STATE.adaptive.programStartDate||'')}"></div><div class="sp254-f"><label>Baseline alimentare</label><select id="sp254Baseline"><option value="no" ${!STATE.adaptive.maintenanceBaseline.validated?'selected':''}>Da calibrare 10–14 giorni</option><option value="yes" ${STATE.adaptive.maintenanceBaseline.validated?'selected':''}>Calibrata</option></select></div></div><div class="sp254-baseline-note"><b>Calibrare = osservare, non contare calorie.</b> Usa porzioni abbastanza ripetibili per 10–14 giorni. Quando il trend descrive il tuo mantenimento pratico, seleziona “Calibrata”. Solo allora la fase applica la propria base; eventuali correzioni extra vengono suggerite dall’Adaptive ma applicate manualmente da Alimentazione.</div><div class="sp254-actions" style="margin-top:10px"><button class="action-btn blue" id="sp254SaveSettings">Salva</button><button class="action-btn" id="sp254Lock">${snap?'Snapshot già salvato':'Salva snapshot settimana'}</button></div></div></div><div class="section-card"><div class="card-pad"><div class="section-title-sm">Decisione suggerita</div><div class="sp254-plain"><b>${ehtml(rec.action)} · confidence ${ehtml(rec.confidence)}</b><br>${ehtml(rec.reason)}<div style="margin-top:8px">L’Adaptive propone soltanto: per cambiare CU/FU apri Alimentazione e conferma lì.</div></div><div class="sp254-actions" style="margin-top:10px"><button class="action-btn green" id="sp254Accept">APRI ALIMENTAZIONE</button><button class="action-btn" id="sp254Defer">DEFER</button><button class="action-btn" id="sp254Review">REVIEW</button></div></div></div></div>`;}
 
   let SP254_ACTIVE='home';
   const TABS=[['home','Home','icon-home',''],['ksessions','4 K','icon-k','gold'],['zone2','Zona 2','icon-mobility',''],['muscles','Muscoli','icon-muscles',''],['body','Check','icon-body',''],['nutrition','Aliment.','icon-body',''],['mobility','Mobilità','icon-mobility',''],['adaptive','Adaptive','',''],['settings','Impost.','icon-settings','']];
@@ -10218,9 +10357,24 @@ try{
     const pr=document.getElementById('sp254Prev');if(pr)pr.onclick=()=>setCalendarWeek(selectedWeek()-1,'home');const nx=document.getElementById('sp254Next');if(nx)nx.onclick=()=>setCalendarWeek(selectedWeek()+1,'home');const op=document.getElementById('sp254Open');if(op)op.onclick=()=>rebuild('adaptive');
     document.querySelectorAll('[data-sp254-week]').forEach(b=>b.onclick=()=>setCalendarWeek(b.dataset.sp254Week,'adaptive'));
     const saveC=document.getElementById('sp254SaveCheck');if(saveC)saveC.onclick=function(){const w=selectedWeek(),all=STATE.adaptive.weeklyCheckIns=STATE.adaptive.weeklyCheckIns||{},prev=all[String(w-1)]||{};const N=id=>{const el=document.getElementById(id),x=Number(el?.value);return el&&el.value!==''&&Number.isFinite(x)?x:null};const V=id=>document.getElementById(id)?.value||'';let c={week:w,weightMean:N('sp254Weight'),waistCm:N('sp254Waist'),hipsCm:N('sp254Hips'),performance:V('sp254Perf')||'same',sleepAvg:N('sp254Sleep'),stepsAvg:N('sp254Steps'),energy:V('sp254Energy')||'normal',hunger:V('sp254Hunger')||'manageable',doms:V('sp254Doms')||'none',pain:V('sp254Pain')||'none',painSite:V('sp254PainSite'),sessionQuality:V('sp254Quality')||'good',lowerTolerance:V('sp254Lower')||'ok',freeMeals:Number(V('sp254Free')||0),illness:V('sp254Ill')||'no',recoveryManual:V('sp254Manual'),createdAt:new Date().toISOString()};if(c.weightMean&&prev.weightMean)c.weightTrendPct=((c.weightMean-prev.weightMean)/prev.weightMean)*100;else c.weightTrendPct=null;if(c.waistCm!=null&&prev.waistCm!=null){const d=c.waistCm-prev.waistCm;c.waistTrend=d<=-.2?'down':d>=.2?'up':'same';}else c.waistTrend='unknown';all[String(w)]=c;try{save();}catch(_e){}rebuild('body');};
+    document.querySelectorAll('[data-sp254-nutri-kind][data-sp254-nutri-delta]').forEach(btn=>btn.onclick=function(){
+      const w=selectedWeek(),cur=manualNutritionFor(w),kind=btn.dataset.sp254NutriKind,delta=Number(btn.dataset.sp254NutriDelta||0);
+      setManualNutritionFor(w,cur.cu+(kind==='cu'?delta:0),cur.fu+(kind==='fu'?delta:0));
+      try{save();}catch(_e){}rebuild('nutrition');
+    });
+    const nr=document.getElementById('sp254NutriReset');if(nr)nr.onclick=function(){setManualNutritionFor(selectedWeek(),0,0);try{save();}catch(_e){}rebuild('nutrition');};
+    const na=document.getElementById('sp254NutriApplyRec');if(na)na.onclick=function(){
+      const w=selectedWeek(),r=recommendation(w),cur=manualNutritionFor(w);
+      if(Number(r.deltaCU||0)!==0||Number(r.deltaFU||0)!==0){
+        setManualNutritionFor(w,cur.cu+Number(r.deltaCU||0),cur.fu+Number(r.deltaFU||0));
+        STATE.adaptive.recommendations=STATE.adaptive.recommendations||{};
+        STATE.adaptive.recommendations[String(w)]={status:'APPLIED_MANUALLY',action:r.action,reason:r.reason,at:new Date().toISOString()};
+        try{save();}catch(_e){}rebuild('nutrition');
+      }
+    };
     const ss=document.getElementById('sp254SaveSettings');if(ss)ss.onclick=function(){STATE.adaptive.programStartDate=document.getElementById('sp254StartDate').value||STATE.adaptive.programStartDate;STATE.adaptive.maintenanceBaseline.validated=document.getElementById('sp254Baseline').value==='yes';STATE.adaptive.maintenanceBaseline.confidence=STATE.adaptive.maintenanceBaseline.validated?'MEDIUM':'LOW';seedGoals();try{save();}catch(_e){}rebuild('adaptive');};
     const lk=document.getElementById('sp254Lock');if(lk)lk.onclick=function(){const w=selectedWeek();STATE.adaptive.snapshots=STATE.adaptive.snapshots||{};if(!STATE.adaptive.snapshots[String(w)])STATE.adaptive.snapshots[String(w)]={week:w,resolved:resolveWeek(w),createdAt:new Date().toISOString()};try{save();}catch(_e){}rebuild('adaptive');};
-    const ac=document.getElementById('sp254Accept');if(ac)ac.onclick=function(){const w=selectedWeek(),r=recommendation(w);STATE.adaptive.recommendations[String(w)]={status:'ACCEPTED',action:r.action,reason:r.reason,at:new Date().toISOString()};if(r.action==='ADD_1_CU'||r.action==='REMOVE_1_CU')STATE.adaptive.acceptedAdjustments.push({effectiveWeek:w,deltaCU:r.deltaCU||0,deltaFU:0,reason:r.reason});try{save();}catch(_e){}rebuild('adaptive');};
+    const ac=document.getElementById('sp254Accept');if(ac)ac.onclick=function(){rebuild('nutrition');};
     const df=document.getElementById('sp254Defer');if(df)df.onclick=function(){const w=selectedWeek(),r=recommendation(w);STATE.adaptive.recommendations[String(w)]={status:'DEFERRED',action:r.action,reason:r.reason,at:new Date().toISOString()};try{save();}catch(_e){}rebuild('adaptive');};
     const rv=document.getElementById('sp254Review');if(rv)rv.onclick=function(){const w=selectedWeek(),r=recommendation(w);STATE.adaptive.recommendations[String(w)]={status:'REVIEW_REQUIRED',action:r.action,reason:r.reason,at:new Date().toISOString()};try{save();}catch(_e){}rebuild('adaptive');};
   }
@@ -10230,7 +10384,8 @@ try{
   document.title='Shadow Protocol — P25 MAXIMUM 9+ · Physical Pareto';
   window.__SHADOW_PROTOCOL_CANONICAL__={
     baseline:'P25 MAXIMUM 9+ FINAL',
-    runtimeSource:'sp254-stable-engine',
+    runtimeSource:'sp258-nutrition-manual-hybrid-v4',
+    phasePeriodization:'2-year summer-peak + automatic phase bases + manual CU/FU corrections',
     morningK:'CANONICAL · Primer A/B/C Lun–Sab · low-fatigue motor learning',
     sunday:'RIPOSO COMPLETO',
     hypertrophySetCounting:'Morning K esclusa',
@@ -10238,7 +10393,7 @@ try{
     legacyPolicy:'NON AUTHORITATIVE — do not use for training audit when P25 is present'
   };
   window.__SHADOW_PROTOCOL_AUDIT__=Object.assign({},window.__SHADOW_PROTOCOL_AUDIT__||{},
-    {version:'P25-2.5.6 Physical Pareto',authoritativePlan:'P25 MAXIMUM 9+ FINAL + Physical Pareto delta',morningKRemoved:false,morningKCanonical:true,morningKCountsAsHypertrophySets:false,motorLearningConditioningSeparated:true,gripArchitectureComplete:true,legacyPlansNonAuthoritative:true,stableSingleRenderer:true,weeklyCheckIntegrated:true,highGoals24m:true});
+    {version:'P25-2.5.8 Nutrition Manual Hybrid',authoritativePlan:'P25 MAXIMUM 9+ FINAL + Physical Pareto delta',morningKRemoved:false,morningKCanonical:true,morningKCountsAsHypertrophySets:false,motorLearningConditioningSeparated:true,gripArchitectureComplete:true,legacyPlansNonAuthoritative:true,stableSingleRenderer:true,weeklyCheckIntegrated:true,highGoals24m:true});
   build('home');
 }catch(e){console.error('SP254 stable patch failed',e);}
 })();
