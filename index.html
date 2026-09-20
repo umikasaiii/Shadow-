@@ -7690,11 +7690,68 @@ body.fx-reduced *{
     function sp65Mob(name,seconds,meta,block){return {block:block||'Mobilità',seconds,e:{name,meta,loadable:false,muscles:[]}};}
     function sp65MorningItems(){
       const items=[];
-      const mkDay=new Date().getDay(),mkW=Math.max(1,Math.min(5,Number(STATE.currentWeek||1))),mkSec=[120,180,180,180,90][mkW-1],mkType=(mkDay===1||mkDay===4)?'A — Movimento e risposta':(mkDay===2||mkDay===5)?'B — Elasticità e meccanica':'C — Terra e transizioni';
-      const mkMeta=mkType[0]==='A'?'RPE 4–5 · 60″ marcia attiva → passi avanti/laterali con arresto controllato; segnale esterno imprevedibile quando disponibile. W1 riduci i blocchi; W5 facile.':mkType[0]==='B'?'RPE 4–5 · 60″ marcia → ~40″ wall march → 2×8–10 pogo bassi con pausa facile → marcia. Rimbalzi bassi e silenziosi.':'RPE 4–5 · 60″ marcia → 2×20″ bear crawl con ~20″ facili → transizioni mezzo-inginocchio/in piedi alternate. Polsi/spalle non devono limitare.';
+      const mkDay=new Date().getDay();
+      const mkW=Math.max(1,Math.min(5,Number(STATE.currentWeek||1)));
+      const mkSec=[120,180,180,180,90][mkW-1];
+      const mkType=(mkDay===1||mkDay===4)?'A — Movimento e risposta':(mkDay===2||mkDay===5)?'B — Elasticità e meccanica':'C — Terra e transizioni';
+      const mkMeta=mkType[0]==='A'
+        ?'RPE 4–5 · 60″ marcia attiva → passi avanti/laterali con arresto controllato; segnale esterno imprevedibile quando disponibile. W1 riduci i blocchi; W5 90″ facile.'
+        :mkType[0]==='B'
+          ?'RPE 4–5 · 60″ marcia → ~40″ wall march → 2×8–10 pogo bassi con pausa facile → marcia. Rimbalzi bassi e silenziosi. W5 90″ facile.'
+          :'RPE 4–5 · 60″ marcia → 2×20″ bear crawl con ~20″ facili → transizioni mezzo-inginocchio/in piedi alternate. Polsi/spalle non devono limitare. W5 90″ facile.';
       items.push(sp65Mob('Morning Primer '+mkType,mkSec,mkMeta,'Primer atletico'));
-      items.push({block:'Vacuum',seconds:30,sets:3,e:{name:'Vacuum 3×30″',meta:'3 serie × 30″ · Addome raccolto, espira bene, mantieni TVA attivo. Reset timer a ogni serie.',loadable:false,muscles:['addome']}});
-      [['Chin tucks',30,'30″ · Cervicale lunga, mento leggermente rientrato.'],['Flessione laterale collo',30,'30″ totali · Alterna lato destro/sinistro.'],['Open books',30,'30″ a lato · Rotazione toracica, bacino fermo.'],['Thoracic extension con foam roller',60,'60″ · Estensione toracica progressiva.'],['Gambe indietro allungamento schiena',30,'30″ · Catena posteriore e dorsali.'],['Wall slides',30,'30″ · Scapole controllate, costole giù.'],['Lat stretch frontale',30,'30″ · Dorsali in allungamento.'],['Intra rotatori',30,'30″ a lato · Controllo spalla.'],['Extra rotatori',30,'30″ a lato · Gomito stabile.'],['Apertura spalle dietro',30,'30″ · Petto aperto, senza strappi.'],['Knee to wall in piedi',30,'30″ a lato · Tallone a terra.'],['90/90 attivo',60,'60″ · Anche attive.'],['Stiramento glutei',30,'30″ a lato.'],['Psoas',60,'60″ a lato · Retroversione bacino.'],['Half split frontale',30,'30″ a lato.'],['Pike in piedi',60,'60″.'],['Pancake seduto',90,'90″.'],['Compression lift',30,'30″.'],['Frog rock',45,'45″.'],['Farfalla',45,'45″.'],['Deep squat',30,'30″.'],['Polsi',30,'30″.']].forEach(x=>items.push(sp65Mob(x[0],x[1],x[2],'Mobilità')));
+
+      /* Vacuum canonico W1→W5: 3×30 / 3×35 / 3×30 / 3×30 / 2×25.
+         W2 usa il centro del range prescritto 30–40″; W5 usa il centro di 20–30″. */
+      const vacuumSets=[3,3,3,3,2][mkW-1];
+      const vacuumSeconds=[30,35,30,30,25][mkW-1];
+      items.push({
+        block:'Vacuum',
+        seconds:vacuumSeconds,
+        sets:vacuumSets,
+        e:{
+          name:`Vacuum ${vacuumSets}×${vacuumSeconds}″`,
+          meta:`W${mkW} · ${vacuumSets} serie × ${vacuumSeconds}″ · recupero 30–45″. Espira, retrai l’addome senza irrigidire il collo; reset timer a ogni serie.`,
+          loadable:false,
+          muscles:['addome']
+        }
+      });
+
+      /* Mobilità canonica Lun–Sab: stessi timer in W1→W5.
+         La W5 scarica Primer (e leggermente Vacuum), ma NON riduce la mobilità:
+         volume già basso e costo sistemico minimo. In W5 resta solo il cue di
+         esecuzione facile, senza forzare ROM né cercare nuovi estremi articolari. */
+      const w5=(mkW===5);
+      const mobSec=sec=>sec;
+      const wkNote=w5?' · W5: stessi tempi; ROM facile, nessuna forzatura o ricerca di nuovo ROM.':'';
+      [
+        ['Chin tucks',30,'30″ · Cervicale lunga, mento leggermente rientrato.'],
+        ['Flessione laterale collo',30,'30″ totali · Alterna lato destro/sinistro.'],
+        ['Open books',30,'30″ a lato · Rotazione toracica, bacino fermo.'],
+        ['Thoracic extension con foam roller',60,'60″ · Estensione toracica progressiva.'],
+        ['Gambe indietro allungamento schiena',30,'30″ · Catena posteriore e dorsali.'],
+        ['Wall slides',30,'30″ · Scapole controllate, costole giù.'],
+        ['Lat stretch frontale',30,'30″ · Dorsali in allungamento.'],
+        ['Intra rotatori',30,'30″ a lato · Controllo spalla.'],
+        ['Extra rotatori',30,'30″ a lato · Gomito stabile.'],
+        ['Apertura spalle dietro',30,'30″ · Petto aperto, senza strappi.'],
+        ['Knee to wall in piedi',30,'30″ a lato · Tallone a terra.'],
+        ['90/90 attivo',60,'60″ · Anche attive.'],
+        ['Stiramento glutei',30,'30″ a lato.'],
+        ['Psoas',60,'60″ a lato · Retroversione bacino.'],
+        ['Half split frontale',30,'30″ a lato.'],
+        ['Pike in piedi',60,'60″.'],
+        ['Pancake seduto',90,'90″.'],
+        ['Compression lift',30,'30″.'],
+        ['Frog rock',45,'45″.'],
+        ['Farfalla',45,'45″.'],
+        ['Deep squat',30,'30″.'],
+        ['Polsi',30,'30″.']
+      ].forEach(x=>{
+        const secs=mobSec(x[1]);
+        const meta=x[2]+wkNote;
+        items.push(sp65Mob(x[0],secs,meta,'Mobilità'));
+      });
       return items;
     }
     function sp65OpenMorningKLive(){
@@ -10775,6 +10832,10 @@ Obiettivo: forza anti-rotazionale ad alta qualità con basso volume e bassa fati
 })();
 </script>
 
+
+<script id="sp-morning-periodized-v6-audit">
+window.__SHADOW_PROTOCOL_AUDIT__=Object.assign({},window.__SHADOW_PROTOCOL_AUDIT__||{}, {morningLivePeriodization:'V6 · Primer deload W5 + Vacuum periodized + mobility full timers W1-W5',morningVacuum:'3x30 / 3x35 / 3x30 / 3x30 / 2x25',morningW5Mobility:'all canonical movements retained · full standard timers · easy ROM/no forcing'});
+</script>
 
 <script>
 (function(){
