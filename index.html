@@ -10933,9 +10933,10 @@ window.__SHADOW_PROTOCOL_AUDIT__=Object.assign({},window.__SHADOW_PROTOCOL_AUDIT
     }
   });
   if("serviceWorker" in navigator){
+    var _hadCtrl=!!navigator.serviceWorker.controller;
     window.addEventListener("load",function(){navigator.serviceWorker.register("./sw.js").catch(function(e){console.warn("[SP] SW:",e);});});
     var _spRld=false;
-    navigator.serviceWorker.addEventListener("controllerchange",function(){if(!_spRld){_spRld=true;window.location.reload();}});
+    navigator.serviceWorker.addEventListener("controllerchange",function(){if(_hadCtrl&&!_spRld){_spRld=true;window.location.reload();}});
   }
 })();
 </script>
